@@ -39,5 +39,6 @@ Route::prefix('dokter')->middleware(['auth', 'auth.dokter'])->group(function () 
 
 
 Route::get('logout', function () {
-    Auth::user()->logout();
-});
+    Auth::logout();
+    return redirect('login');
+})->name('logout');
