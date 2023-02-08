@@ -1,21 +1,141 @@
 @extends('layouts.AdminTemplate.sneat_admin_template')
 
 @section('content')
+<div class="row justify-content-center mb-4">
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <div class="card text-center">
+                <div class="card-body">
+                <h5 class="card-title">Data pasien</h5>
+                <h3 class="card-title text-nowrap mb-2">{{$jumlahDataPasien}} Pasien</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card text-center">
+                <div class="card-body">
+                <h5 class="card-title">Poli klinik</h5>
+                <h3 class="card-title text-nowrap mb-2">40 Poli</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card text-center">
+                <div class="card-body">
+                <h5 class="card-title">Data dokter</h5>
+                <h3 class="card-title text-nowrap mb-2">23 Dokter</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <h5 class="card-header">Data poli klinik</h5>
+            <div class="card-body">
+                {{-- <a href="{{route('user.create')}}" class="btn btn-primary btn-sm mb-3">Tambah Data</a> --}}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Poli Klinik</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($dataPoliKlinik as $poliklinik)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$poliklinik->nama_poli}}</td>
+                                    <td>
+                                        <a href="{{route('edit.poliklinik', $poliklinik->id)}}" class="btn btn-secondary btn-sm">
+                                            Edit
+                                        </a>
+                                        <form action="{{route('hapus.poliklinik', $poliklinik->id)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {!! $dataPoliKlinik->links() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row justify-content-center">
-  <div class="col-md-12">
-      <div class="card">
-          <div class="card-header">Hai, Welcomeback admin</div>
-
-          <div class="card-body">
-              @if (session('status'))
-                  <div class="alert alert-success" role="alert">
-                      {{ session('status') }}
-                  </div>
-              @endif
-
-              {{ __('You are logged in!') }}
-          </div>
-      </div>
-  </div>
+    <div class="col-md-12">
+        <div class="card">
+            <h5 class="card-header">Data pasien</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Pasien</th>
+                                <th>Umur</th>
+                                <th>Alamat</th>
+                                <th>Jenis Kelamin</th>
+                                <th>No Telpon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($dataPasien as $pasien)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$pasien->nama}}</td>
+                                    <td>{{$pasien->umur}}</td>
+                                    <td>{{$pasien->jenis_kelamin}}</td>
+                                    <td>{{$pasien->no_telpon}}</td>
+                                    <td>{{$pasien->alamat}}</td>
+                                    <td>
+                                        <a href="{{route('edit.pasien', $pasien->id)}}" class="btn btn-secondary btn-sm">
+                                            Edit
+                                        </a>
+                                        <form action="{{route('hapus.pasien', $pasien->id)}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+                                        {{-- <a href="{{route('hapus.pasien', $item->id)}}" method='delete' class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            Hapus
+                                        </a> --}}
+                                        {{-- {!! Form::open([
+                                            'route' => ['user.destroy', $item->id],
+                                            'method' => 'delete',
+                                            'onsubmit' => 'return confirm("Yakin igin menghapus data ini?")',
+                                        ]) !!}
+                                        <a href="{{route('user.edit', $item->id)}}" class="btn btn-secondary btn-sm">
+                                            <i class="fa fa-edit me-1"></i>Edit</a>
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash me-1"></i>Hapus
+                                            </button>
+                                        {!! Form::close() !!} --}}
+                                    </td>
+                                </tr>
+                            @endforeach
+                            {{-- @empty
+                            <tr>
+                                <td colspan="4">Data tidak ada</td>
+                            </tr>
+                                
+                            @endforelse --}}
+                        </tbody>
+                    </table>
+                    {!! $dataPasien->links() !!}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
