@@ -146,6 +146,12 @@
                 <div data-i18n="Analytics">Tambah pasien</div>
               </a>
             </li>
+            <li class="menu-item {{\Route::is('tambah.pendaftaran') ? 'active' : ''}}">
+              <a href="{{route('tambah.pendaftaran')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Analytics">Pendaftaran pasien</div>
+              </a>
+            </li>
             
             
             <!-- Cards -->

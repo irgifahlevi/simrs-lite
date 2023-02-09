@@ -15,6 +15,11 @@ class PoliKlinik extends Model
 
     public function dokter()
     {
-        return $this->hasMany(Dokter::class, 'poliklinik_id', 'id');
+        return $this->hasMany(Dokter::class);
+    }
+
+    public function pendaftaran()
+    {
+        return $this->hasMany(Pendaftaran::class);
     }
 }

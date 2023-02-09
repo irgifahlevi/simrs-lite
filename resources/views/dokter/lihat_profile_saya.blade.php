@@ -40,8 +40,8 @@
                   <input class="form-control" value="{{ old('role') ?? $dataDokter->user->role }}" disabled />
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="state" class="form-label">Waktu di buat</label>
-                  <input class="form-control" value="{{ old('updated_at') ?? $dataDokter->updated_at }}" disabled />
+                  <label for="state" class="form-label">Poli Klinik</label>
+                  <input class="form-control" value="{{ old('updated_at') ?? $dataDokter->poliklinik->nama_poli }}" disabled />
                 </div>
               </div>
               <div class="mt-2">

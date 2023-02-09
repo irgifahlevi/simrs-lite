@@ -140,12 +140,12 @@
                 <div data-i18n="Analytics">Lengkapi data</div>
               </a>
             </li>
-            <li class="menu-item {{\Route::is('poliklinik.tambah') ? 'active' : ''}}">
+            {{-- <li class="menu-item {{\Route::is('poliklinik.tambah') ? 'active' : ''}}">
               <a href="{{route('poliklinik.tambah')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Tambah Poliklinik</div>
               </a>
-            </li>
+            </li> --}}
   
             <!-- Cards -->
             <li class="menu-item">

@@ -33,8 +33,8 @@ class Dokter extends Model
     }
 
 
-    public function pendaftaran()
+    public function statusPoli()
     {
-        return $this->hasOne(Pendaftaran::class, 'dokter_id', 'id');
+        return $this->hasOne(StatusPoli::class, 'dokter_id', 'id');
     }
 }

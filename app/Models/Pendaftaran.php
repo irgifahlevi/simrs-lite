@@ -12,26 +12,28 @@ class Pendaftaran extends Model
     protected $fillable = [
         'poliklinik_id',
         'pasien_id',
-        'tanggal_pendaftaran',
         'kategori',
-        'antrian',
-        'diagnosa',
-        'status_poli',
-        'dokter_id',
+        'nama_pasien_baru',
+        'umur_pasien_baru',
+        'jk_pasien_baru',
+        'alamat_pasien_baru',
+        'telpon_pasien_baru',
+        'tanggal_pendaftaran',
+        'antrian'
     ];
 
     public function pasien()
     {
-        return $this->belongsTo(Pasien::class);
+        return $this->belongsTo(Pasien::class, 'pasien_id', 'id');
     }
 
     public function poliklinik()
     {
-        return $this->belongsTo(PoliKlinik::class);
+        return $this->belongsTo(PoliKlinik::class, 'poliklinik_id', 'id');
     }
 
-    public function dokter()
+    public function statusPoli()
     {
-        return $this->belongsTo(Dokter::class);
+        return $this->hasMany(StatusPoli::class, 'pendaftaran_id', 'id');
     }
 }

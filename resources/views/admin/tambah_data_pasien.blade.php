@@ -22,16 +22,16 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                          <label for="defaultSelect" class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                          <div class="col-sm-10">
-                              <select id="defaultSelect" class="form-select" name="jenis_kelamin">
-                                  <option>Masukan jenis kelamin</option>
-                                  <option value="Laki-laki">Laki-laki</option>
-                                  <option value="Perempuan">Perempuan</option>
-                              </select>
-                              <span class="text-danger text-sm mt-1">{{$errors->first('jenis_kelamin')}}</span>    
-                          </div>    
-                      </div>
+                            <label for="defaultSelect" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                            <div class="col-sm-10">
+                                <select id="defaultSelect" class="form-select" name="jenis_kelamin">
+                                    <option>Masukan jenis kelamin</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                                <span class="text-danger text-sm mt-1">{{$errors->first('jenis_kelamin')}}</span>    
+                            </div>    
+                        </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Alamat</label>
                             <div class="col-sm-10">

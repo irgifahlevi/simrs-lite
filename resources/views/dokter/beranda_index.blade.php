@@ -21,52 +21,42 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="card">
-            <h5 class="card-header">Data poli klinik</h5>
+            <h5 class="card-header">Daftar list pendaftaran pasien</h5>
             <div class="card-body">
-                {{-- <a href="{{route('user.create')}}" class="btn btn-primary btn-sm mb-3">Tambah Data</a> --}}
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Poli Klinik</th>
+                                <th>Nama Poliklinik</th>
+                                <th>Nama pendaftar</th>
+                                <th>Kategori</th>
+                                <th>Tanggal Pendaftaran</th>
+                                <th>No Antrian</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataPoliKlinik as $item)
+                            @foreach ($dataPendaftaran as $pendaftar)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->nama_poli}}</td>
+                                    <td>{{$pendaftar->poliklinik->nama_poli}}</td>
+                                    <td>{{$pendaftar->pasien->nama}}</td>
+                                    <td>{{$pendaftar->kategori}}</td>
+                                    <td>{{$pendaftar->tanggal_pendaftaran}}</td>
+                                    <td>{{$pendaftar->antrian}}</td>
                                     <td>
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash me-1"></i>Hapus
-                                        </button>
-                                        {{-- {!! Form::open([
-                                            'route' => ['user.destroy', $item->id],
-                                            'method' => 'delete',
-                                            'onsubmit' => 'return confirm("Yakin igin menghapus data ini?")',
-                                        ]) !!}
-                                        <a href="{{route('user.edit', $item->id)}}" class="btn btn-secondary btn-sm">
-                                            <i class="fa fa-edit me-1"></i>Edit</a>
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash me-1"></i>Hapus
-                                            </button>
-                                        {!! Form::close() !!} --}}
+                                        <a href="{{route('poli.pasien', $pendaftar->id)}}" class="btn btn-success btn-sm">Periksa</a>
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- @empty
-                            <tr>
-                                <td colspan="4">Data tidak ada</td>
-                            </tr>
-                                
-                            @endforelse --}}
                         </tbody>
                     </table>
-                    {{-- {!! $users->links() !!} --}}
+                    {!! $dataPendaftaran->links() !!}
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\BerandaAdminController;
 use App\Http\Controllers\Admin\PasienController;
+use App\Http\Controllers\Admin\PendaftaranPasienController;
 use App\Http\Controllers\Admin\PoliKlinikController;
 use App\Http\Controllers\Dokter\BerandaDokterController;
+use App\Http\Controllers\Dokter\StatusPoliController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,16 @@ Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function () {
     Route::get('edit/{id}/pasien', [PasienController::class, 'editDataPasien'])->name('edit.pasien');
     Route::post('update/{id}/pasien', [PasienController::class, 'updateDataPasien'])->name('update.pasien');
     Route::delete('hapus/{id}/pasien', [PasienController::class, 'hapusDataPasien'])->name('hapus.pasien');
+
+
+    // Route pendaftaran pasien
+    Route::get('pendaftaran-pasien', [PendaftaranPasienController::class, 'tambahPendaftaran'])->name('tambah.pendaftaran');
+    Route::post('simpan-pendaftaran', [PendaftaranPasienController::class, 'simpanPendaftaran'])->name('simpan.pendaftaran');
+    Route::delete('hapus/{id}/pendaftaran', [PendaftaranPasienController::class, 'hapusPendaftaran'])->name('hapus.pendaftaran');
+
+
+    // Lihat status pendaftaran diperiksa
+    Route::get('lihat/{id}/status', [PendaftaranPasienController::class, 'lihatStatus'])->name('lihat.status');
 });
 
 
@@ -60,9 +72,10 @@ Route::prefix('dokter')->middleware(['auth', 'auth.dokter'])->group(function () 
     Route::post('simpan-data', [BerandaDokterController::class, 'simpanData'])->name('dokter.simpan');
     Route::get('profile-dokter', [BerandaDokterController::class, 'tampilProfile'])->name('dokter.profile');
 
-    // Tambah poliklinik
-    // Route::get('tambah-data-poliklinik', [PoliklinikController::class, 'tambahDatapoliklinik'])->name('poliklinik.tambah');
-    // Route::post('simpan-data-poliklinik', [PoliklinikController::class, 'simpanDatapoliklinik'])->name('poliklinik.simpan');
+
+    // Poli pasien
+    Route::get('poli/{id}/pasien', [StatusPoliController::class, 'buatPoli'])->name('poli.pasien');
+    Route::post('simpan/{id}/poli', [StatusPoliController::class, 'simpanPoli'])->name('simpan.poli');
 });
 
 
@@ -72,6 +85,8 @@ Route::get('logout', function () {
 })->name('logout');
 
 
+
+// Inject tinker ke dalam database
 // User::create([
 //     'name' => 'Admin',
 //     'email' => 'admin@gmail.com',

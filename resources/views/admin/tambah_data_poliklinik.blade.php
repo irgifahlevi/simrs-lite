@@ -10,7 +10,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Poliklinik</label>
                             <div class="col-sm-10">
-                                <input type="text" name="nama_poli" class="form-control" id="basic-default-name" value="{{ old('nama_poli')}}/>
+                                <input type="text" name="nama_poli" class="form-control" id="basic-default-name" value="{{ old('nama_poli')}}"/>
                                 <span class="text-danger text-sm mt-1">{{$errors->first('nama_poli')}}</span>
                             </div>
                         </div>
