@@ -125,49 +125,7 @@
     <div class="col-md-12">
         <div class="card">
             <h5 class="card-header">Daftar list pendaftaran</h5>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama pendaftar</th>
-                                <th>Tanggal Pendaftaran</th>
-                                <th>No Antrian</th>
-                                <th>Diagnosa pasien</th>
-                                <th>Dokter pemeriksa</th>
-                                <th>Poliklinik</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{-- @php
-                                dd($pendaftaranDiperiksa)
-                            @endphp --}}
-                            @foreach ($pendaftaranDiperiksa as $diperiksa)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$diperiksa->pasien->nama}}</td>
-                                    <td>{{$diperiksa->tanggal_pendaftaran}}</td>
-                                    <td>{{$diperiksa->antrian}}</td>
-                                    <td>{{$diperiksa->statusPoli->diagnosa}}</td>
-                                    <td>
-                                        {{-- <a class="btn btn-info btn-sm">{{$diperiksa->statusPoli->status_poli}}</a> --}}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {!! $pendaftaranDiperiksa->links() !!}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row justify-content-center mb-4">
-    <div class="col-md-12">
-        <div class="card">
-            <h5 class="card-header">Daftar list pendaftaran pasien yang sudah diperiksa</h5>
+            
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
@@ -205,6 +163,53 @@
                         </tbody>
                     </table>
                     {!! $pendaftaranPasien->links() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <h5 class="card-header">Daftar list pendaftaran pasien yang sudah diperiksa</h5>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama pendaftar</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Umur</th>
+                                <th>Tanggal Pendaftaran</th>
+                                <th>Antrian</th>
+                                <th>Diagnosa</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                // dd($pendaftaranDiperiksa)
+                            @endphp
+                            @foreach ($pendaftaranDiperiksa as $diperiksa)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $diperiksa->pasien->nama }}</td>
+                                    <td>{{ $diperiksa->pasien->jenis_kelamin }}</td>
+                                    <td>{{ $diperiksa->pasien->umur }}</td>
+                                    <td>{{ $diperiksa->tanggal_pendaftaran }}</td>
+                                    <td>{{ $diperiksa->antrian }}</td>
+                                    @foreach ($diperiksa->statusPoli as $statusPoli)
+                                        <td>{{ $statusPoli->diagnosa }}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm">{{$statusPoli->status_poli}}</a>
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- {!! $pendaftaranDiperiksa->links() !!} --}}
                 </div>
             </div>
         </div>

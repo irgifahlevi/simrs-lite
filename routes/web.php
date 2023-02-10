@@ -93,3 +93,11 @@ Route::get('logout', function () {
 //     'password' => bcrypt('Test1234_'),
 //     'role' => 'admin'
 // ]);
+
+// Inject tinker ke dalam database
+// User::create([
+//     'name' => 'Jamal',
+//     'email' => 'jamal@gmail.com',
+//     'password' => bcrypt('Test1234_'),
+//     'role' => 'dokter'
+// ]);

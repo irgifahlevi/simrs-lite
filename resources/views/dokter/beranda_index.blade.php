@@ -5,6 +5,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">Hai, Welcomeback dokter</div>
+            <h1 class="card-body">Mohon lengkapi data anda dahulu</h1>
 
             <div class="card-body">
                 @if (session('status'))
